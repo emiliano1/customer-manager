@@ -1,0 +1,42 @@
+<app-layout>
+  <nb-card accent="info">
+    <nb-card-header>
+      <h3 class="card-title font-weight-light text-muted">
+        <i class="fas fa-users"></i>&nbsp;Customers List
+      </h3>
+    </nb-card-header>
+    <nb-card-body>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>E-mail</th>
+          <th>Phone</th>
+          <th>Bio</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{customer.id}}</td>
+          <td>{{customer.name}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.phone}}</td>
+          <td>{{customer.bio}}</td>
+          <td class="text-center">
+            <button class="btn btn-primary btn-sm" [routerLink]="['/customers', customer.id]">
+              <i class="fas fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </nb-card-body>
+    <nb-card-footer>
+      <button class="btn btn-primary btn-sm" routerLink="/customers/new">
+        <i class="fas fa-plus"></i>&nbsp;New Customer
+      </button>
+    </nb-card-footer>
+  </nb-card>
+</app-layout>

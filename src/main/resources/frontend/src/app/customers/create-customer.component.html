@@ -1,0 +1,74 @@
+<app-layout>
+  <nb-card accent="info">
+    <nb-card-header>
+      <h3 class="card-title font-weight-light text-muted">
+        <i class="fas fa-users"></i>&nbsp;New Customer
+      </h3>
+    </nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="customerForm" novalidate>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label font-weight-bold">Name</label>
+              <input type="text" class="form-control {{customerForm.controls['name'].invalid && customerForm.controls['name'].touched ? 'is-invalid' : 'is-valid' }}" name="name" formControlName="name" #name/>
+              <div
+                *ngIf="customerForm.controls['name'].invalid && (customerForm.controls['name'].dirty || customerForm.controls['name'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="customerForm.controls['name'].errors.required">
+                  Name is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label class="form-control-label font-weight-bold">E-mail</label>
+              <input type="text" class="form-control {{customerForm.controls['email'].invalid && customerForm.controls['email'].touched ? 'is-invalid' : 'is-valid' }}" name="email" formControlName="email" #email/>
+              <div
+                *ngIf="customerForm.controls['email'].invalid && (customerForm.controls['email'].dirty || customerForm.controls['email'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="customerForm.controls['email'].errors.required">
+                  E-mail is required.
+                </div>
+                <div *ngIf="customerForm.controls['email'].errors.email">
+                  Invalid e-mail.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label class="form-control-label font-weight-bold">Phone</label>
+              <input type="text" class="form-control {{customerForm.controls['phone'].invalid && customerForm.controls['phone'].touched ? 'is-invalid' : 'is-valid' }}" name="phone" formControlName="phone" #phone/>
+              <div *ngIf="customerForm.controls['phone'].invalid && (customerForm.controls['phone'].dirty || customerForm.controls['phone'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="customerForm.controls['phone'].errors.required">
+                  Phone number is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label class="form-control-label font-weight-bold">Bio</label>
+              <textarea type="text" class="form-control {{customerForm.controls['bio'].invalid && customerForm.controls['bio'].touched ? 'is-invalid' : 'is-valid' }}" name="bio" formControlName="bio" rows="6" #bio></textarea>
+              <div
+                *ngIf="customerForm.controls['bio'].invalid && (customerForm.controls['bio'].dirty || customerForm.controls['bio'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="customerForm.controls['bio'].errors.required">
+                  Biography is required.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+    <nb-card-footer>
+      <button class="btn btn-success btn-sm" [disabled]="customerForm.invalid" (click)="onSubmit(customerForm)">
+        <i class="fas fa-save"></i>&nbsp;Save
+      </button>
+    </nb-card-footer>
+  </nb-card>
+</app-layout>
